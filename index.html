@@ -18,18 +18,95 @@
       crossorigin=""
     ></script>
     <style>
+      body {
+        background-color: lightgreen;
+      }
+      .header p {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      .header {
+        overflow: hidden;
+        background-color: greenyellow;
+        padding: 20px 10px;
+      }
+
+      /* Style the header links */
+      .header p {
+        float: left;
+        color: black;
+        text-align: center;
+        padding: 12px;
+        text-decoration: none;
+        font-size: 36px;
+        line-height: 25px;
+        border-radius: 4px;
+      }
       #map {
         height: 80vh;
+      }
+
+      /* CSS */
+      .button-5 {
+        align-items: center;
+        background-clip: padding-box;
+        background-color: #fa6400;
+        border: 1px solid transparent;
+        border-radius: 0.25rem;
+        box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+        box-sizing: border-box;
+        color: #fff;
+        cursor: pointer;
+        display: inline-flex;
+        font-family: system-ui, -apple-system, system-ui, "Helvetica Neue",
+          Helvetica, Arial, sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+        justify-content: center;
+        line-height: 1.25;
+        margin: 0;
+        min-height: 3rem;
+        padding: calc(0.875rem - 1px) calc(1.5rem - 1px);
+        position: relative;
+        text-decoration: none;
+        transition: all 250ms;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        vertical-align: baseline;
+        width: auto;
+      }
+
+      .button-5:hover,
+      .button-5:focus {
+        background-color: #fb8332;
+        box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+      }
+
+      .button-5:hover {
+        transform: translateY(-1px);
+      }
+
+      .button-5:active {
+        background-color: #c85000;
+        box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+        transform: translateY(0);
       }
     </style>
   </head>
   <body>
-    <h1>Wakacje 2024</h1>
-    <h3>Kazimierz Dolny</h3>
-    <div id="map"></div>
-    <div>
-      <button id="link_to_web"></button>
+    <div class="header">
+      <p>Wakacje 2024 - Kazimierz Dolny</p>
+      <p>Plan wycieczki</p>
     </div>
+
+    <div>
+      <button id="link_to_web" class="button-5">...wybierz znacznik</button>
+    </div>
+    <div id="map"></div>
+    <div class="data-list">
+      <ol></ol>
+    </div>
+
     <script src="data.js"></script>
     <script src="to_sandomierz.js"></script>
     <script src="to_lublin.js"></script>
@@ -95,15 +172,12 @@
           .bindPopup(localization.popup_text)
           .openPopup()
           .on("click", () => {
-            console.log(localization.popup_text);
             a_to_travel.innerText = localization.popup_text;
-
             a_to_travel.addEventListener("click", () => {
               window.open(localization.link, "_blank").focus();
             });
           })
           .addTo(map);
-        console.log(localization);
       }
     </script>
   </body>
