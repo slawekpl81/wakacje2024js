@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="travel-luggage.png" />
+    <title>WAKACJE2024</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+    <style>
+      #map {
+        height: 80vh;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Wakacje 2024</h1>
+    <h3>Kazimierz Dolny</h3>
+    <div id="map"></div>
+    <div>
+      <button id="link_to_web"></button>
+    </div>
+    <script src="data.js"></script>
+    <script src="to_sandomierz.js"></script>
+    <script src="to_lublin.js"></script>
+    <script src="to_zamek.js"></script>
+    <script>
+      let castle_icon = L.icon({
+        iconUrl: "castle.png",
+        iconSize: [38, 95],
+      });
+      let sleep_icon = L.icon({
+        iconUrl: "sleeping.png",
+        iconSize: [38, 95],
+      });
+      let here_icon = L.icon({
+        iconUrl: "placeholder.png",
+        iconSize: [38, 38],
+      });
+
+      let map = L.map("map").setView(
+        [51.31526320761561, 21.953262725983183],
+        13
+      );
+      L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 19,
+        attribution:
+          '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+      }).addTo(map);
+
+      L.geoJSON(to_sand).addTo(map);
+      L.geoJSON(to_lu).addTo(map);
+      L.geoJSON(to_uj).addTo(map);
+
+      // Check if geolocation is supported by the browser
+      if ("geolocation" in navigator) {
+        // Prompt user for permission to access their location
+        navigator.geolocation.getCurrentPosition(
+          // Success callback function
+          (position) => {
+            // Get the user's latitude and longitude coordinates
+            const lat = position.coords.latitude;
+            const lng = position.coords.longitude;
+            L.marker([lat, lng], { icon: here_icon })
+              .bindPopup("TU JESTEM!")
+              .openPopup()
+              .addTo(map);
+
+            // Do something with the location data, e.g. display on a map
+            console.log(`Latitude: ${lat}, longitude: ${lng}`);
+          },
+          // Error callback function
+          (error) => {
+            // Handle errors, e.g. user denied location sharing permissions
+            console.error("Error getting user location:", error);
+          }
+        );
+      } else {
+        // Geolocation is not supported by the browser
+        console.error("Geolocation is not supported by this browser.");
+      }
+      let a_to_travel = document.querySelector("#link_to_web");
+      for (let localization of localizations) {
+        L.marker(localization.coord)
+          .bindPopup(localization.popup_text)
+          .openPopup()
+          .on("click", () => {
+            console.log(localization.popup_text);
+            a_to_travel.innerText = localization.popup_text;
+
+            a_to_travel.addEventListener("click", () => {
+              window.open(localization.link, "_blank").focus();
+            });
+          })
+          .addTo(map);
+        console.log(localization);
+      }
+    </script>
+  </body>
+</html>
