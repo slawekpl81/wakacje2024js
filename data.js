@@ -1,5 +1,13 @@
 localizations = [
   {
+    name: "nocne_zwiedzanie",
+    town: "KazimierzDolny",
+    coord: [],
+    color: "blue",
+    popup_text: "Nocne zwiedzanie wąwozów",
+    link: "https://nocnezwiedzaniekazimierza.pl/",
+  },
+  {
     name: "nocleg",
     town: "KazimierzDolny",
     coord: [51.31526320761561, 21.953262725983183],

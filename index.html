@@ -91,6 +91,11 @@
         box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
         transform: translateY(0);
       }
+      .add_place {
+        margin: 5px;
+        padding: 5px;
+        border: #fa6400 1px solid;
+      }
     </style>
   </head>
   <body>
@@ -104,13 +109,14 @@
     </div>
     <div id="map"></div>
     <div class="data-list">
-      <ul>
-        <li>
-          <a href="https://nocnezwiedzaniekazimierza.pl/"
-            >Nocne zwiedzanie Kazimierza</a
-          >
-        </li>
-      </ul>
+      <ul></ul>
+    </div>
+    <div class="add_place">
+      <input type="text" name="place_coordination" id="in_coordination" />
+      <input type="text" name="place_name" id="in_name" value="miejsce" />
+      <input type="text" name="place_link" id="in_link" value="link" />
+      <button id="bttn_ad_to_list">dodaj</button>
+      <button>zapisz do pliku</button>
     </div>
 
     <script src="data.js"></script>
