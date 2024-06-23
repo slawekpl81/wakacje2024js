@@ -21,6 +21,16 @@
       body {
         background-color: lightgreen;
       }
+      a,
+      span {
+        padding: 2px;
+        margin-left: 5px;
+        border: #fa6400 1px solid;
+        border-radius: 3px;
+      }
+      li {
+        margin-top: 10px;
+      }
       .header p {
         font-family: Arial, Helvetica, sans-serif;
       }
@@ -44,53 +54,6 @@
       #map {
         height: 80vh;
       }
-
-      /* CSS */
-      .button-5 {
-        align-items: center;
-        background-clip: padding-box;
-        background-color: #fa6400;
-        border: 1px solid transparent;
-        border-radius: 0.25rem;
-        box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
-        box-sizing: border-box;
-        color: #fff;
-        cursor: pointer;
-        display: inline-flex;
-        font-family: system-ui, -apple-system, system-ui, "Helvetica Neue",
-          Helvetica, Arial, sans-serif;
-        font-size: 16px;
-        font-weight: 600;
-        justify-content: center;
-        line-height: 1.25;
-        margin: 0;
-        min-height: 3rem;
-        padding: calc(0.875rem - 1px) calc(1.5rem - 1px);
-        position: relative;
-        text-decoration: none;
-        transition: all 250ms;
-        user-select: none;
-        -webkit-user-select: none;
-        touch-action: manipulation;
-        vertical-align: baseline;
-        width: auto;
-      }
-
-      .button-5:hover,
-      .button-5:focus {
-        background-color: #fb8332;
-        box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
-      }
-
-      .button-5:hover {
-        transform: translateY(-1px);
-      }
-
-      .button-5:active {
-        background-color: #c85000;
-        box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
-        transform: translateY(0);
-      }
       .add_place {
         margin: 5px;
         padding: 5px;
@@ -103,20 +66,28 @@
       <p>Wakacje 2024 - Kazimierz Dolny</p>
       <p>Plan wycieczki</p>
     </div>
-
-    <div>
-      <button id="link_to_web" class="button-5">...wybierz znacznik</button>
+    <div class="add_place">
+      <p>Dodaj miejsce</p>
+      <input type="text" name="place_coordination" id="in_coordination" />
+      <input type="text" name="place_name" id="in_name" placeholder="miejsce" />
+      <input
+        type="text"
+        name="place_town"
+        id="in_town"
+        placeholder="miejscowość"
+      />
+      <input
+        type="text"
+        name="place_link"
+        id="in_link"
+        placeholder="link do strony"
+      />
+      <button id="bttn_ad_to_list">dodaj</button>
+      <button>zapisz do pliku</button>
     </div>
     <div id="map"></div>
     <div class="data-list">
       <ul></ul>
-    </div>
-    <div class="add_place">
-      <input type="text" name="place_coordination" id="in_coordination" />
-      <input type="text" name="place_name" id="in_name" value="miejsce" />
-      <input type="text" name="place_link" id="in_link" value="link" />
-      <button id="bttn_ad_to_list">dodaj</button>
-      <button>zapisz do pliku</button>
     </div>
 
     <script src="data.js"></script>
