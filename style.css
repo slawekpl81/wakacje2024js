@@ -1,0 +1,41 @@
+body {
+  background-color: lightgreen;
+}
+a,
+span {
+  padding: 2px;
+  margin-left: 5px;
+  border: #fa6400 1px solid;
+  border-radius: 3px;
+}
+li {
+  margin-top: 10px;
+}
+.header p {
+  font-family: Arial, Helvetica, sans-serif;
+}
+.header {
+  overflow: hidden;
+  background-color: greenyellow;
+  padding: 20px 10px;
+}
+
+/* Style the header links */
+.header p {
+  float: left;
+  color: black;
+  text-align: center;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 36px;
+  line-height: 25px;
+  border-radius: 4px;
+}
+#map {
+  height: 80vh;
+}
+.add_place {
+  margin: 5px;
+  padding: 5px;
+  border: #fa6400 1px solid;
+}

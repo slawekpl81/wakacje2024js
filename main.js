@@ -18,6 +18,8 @@ let lng_click = 0;
 let map;
 let markers = [];
 // let layer;
+let localizations = [...localizations_data];
+let selected = null;
 //  ==================== MAP =================================================
 
 function create_map() {
@@ -61,7 +63,7 @@ document.querySelector("#bttn_ad_to_list").addEventListener("click", () => {
     // color: "blue",
     popup_text: document.querySelector("#in_name").value,
     link: document.querySelector("#in_link").value,
-    id: localizations.length,
+    id: getId(),
   });
   console.log(localizations);
   document.querySelector("#in_coordination").value = "";
@@ -104,7 +106,7 @@ if ("geolocation" in navigator) {
 }
 // ================= ADD ID TO DATA ==========================================
 localizations.forEach((element, n) => {
-  element.id = n;
+  element.id = getId();
 });
 // ============================================================================
 
@@ -116,16 +118,21 @@ function add_markers() {
         .bindPopup(localization.popup_text)
         .openPopup()
         .on("click", () => {
-          a_to_travel.innerText = localization.popup_text;
+          // a_to_travel.innerText = localization.popup_text;
           data_link = localization.link;
+          selected = localization.id;
+          update_list();
         });
       markers.push(temp);
     }
   }
   markers.forEach((m) => m.addTo(map));
+  console.log("markers ", markers.length);
 }
 function remove_all_markers() {
+  markers.forEach((m) => map.removeLayer(m));
   markers.forEach((m) => m.remove());
+  markers = [];
 }
 add_markers();
 // ===================== LIST =======================================================
@@ -135,10 +142,17 @@ function render_list() {
     const li = document.createElement("li");
     const select_span = document.createElement("span");
     select_span.innerText = "ZAZNACZ";
+    select_span.setAttribute("id", localization.id);
+    select_span.addEventListener("click", selectLocalization);
     const remove_span = document.createElement("span");
+    remove_span.setAttribute("id", localization.id);
+    remove_span.addEventListener("click", removeLocalization);
     remove_span.innerText = "USUŃ";
 
     li.innerText = `${localization.town} - ${localization.popup_text}`;
+    if (localization.id == selected) {
+      li.style.backgroundColor = "lightgrey";
+    }
 
     if (localization.link != "") {
       const a_link = document.createElement("a");
@@ -163,8 +177,32 @@ render_list();
 // =====================================================================================
 function update_map() {
   remove_all_markers();
+  // console.log(localizations);
   add_markers();
+}
+function update_list() {
   clear_list();
   render_list();
 }
 // =====================================================================================
+function selectLocalization(event) {
+  event.preventDefault();
+  const selected_id = event.target.id;
+  selected = selected_id;
+  update_map();
+  update_list();
+}
+function removeLocalization(event) {
+  event.preventDefault();
+  const remove_id = event.target.id;
+  console.log(remove_id);
+  localizations = [
+    ...localizations.filter((location) => location.id != remove_id),
+  ];
+  update_map();
+  update_list();
+}
+// ======================================================================================
+function getId() {
+  return Math.floor(Math.random() * 1000) + Date.now();
+}

@@ -1,4 +1,4 @@
-localizations = [
+localizations_data = [
   {
     name: "nocne_zwiedzanie",
     town: "KazimierzDolny",

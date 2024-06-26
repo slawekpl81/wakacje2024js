@@ -17,49 +17,7 @@
       integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
       crossorigin=""
     ></script>
-    <style>
-      body {
-        background-color: lightgreen;
-      }
-      a,
-      span {
-        padding: 2px;
-        margin-left: 5px;
-        border: #fa6400 1px solid;
-        border-radius: 3px;
-      }
-      li {
-        margin-top: 10px;
-      }
-      .header p {
-        font-family: Arial, Helvetica, sans-serif;
-      }
-      .header {
-        overflow: hidden;
-        background-color: greenyellow;
-        padding: 20px 10px;
-      }
-
-      /* Style the header links */
-      .header p {
-        float: left;
-        color: black;
-        text-align: center;
-        padding: 12px;
-        text-decoration: none;
-        font-size: 36px;
-        line-height: 25px;
-        border-radius: 4px;
-      }
-      #map {
-        height: 80vh;
-      }
-      .add_place {
-        margin: 5px;
-        padding: 5px;
-        border: #fa6400 1px solid;
-      }
-    </style>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div class="header">
@@ -83,7 +41,7 @@
         placeholder="link do strony"
       />
       <button id="bttn_ad_to_list">dodaj</button>
-      <button>zapisz do pliku</button>
+      <!-- <button>zapisz do pliku</button> -->
     </div>
     <div id="map"></div>
     <div class="data-list">
@@ -91,9 +49,9 @@
     </div>
 
     <script src="data.js"></script>
-    <script src="to_sandomierz.js"></script>
+    <!-- <script src="to_sandomierz.js"></script>
     <script src="to_lublin.js"></script>
-    <script src="to_zamek.js"></script>
+    <script src="to_zamek.js"></script> -->
     <script src="main.js"></script>
   </body>
 </html>
