@@ -191,7 +191,12 @@ function selectLocalization(event) {
   selected = selected_id;
   update_map();
   update_list();
+  let select_localization = localizations.find((e) => e.id == selected_id);
+  let select_coord = select_localization.coord;
+  console.log(select_coord);
+  map.setView(select_coord, 13);
 }
+// =========================================================================================
 function removeLocalization(event) {
   event.preventDefault();
   const remove_id = event.target.id;
