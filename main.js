@@ -215,24 +215,26 @@ create_map();
 create_layer();
 
 document.querySelector("#bttn_ad_to_list").addEventListener("click", () => {
-  let temp = {
-    // name: "nocne_zwiedzanie",
-    town: document.querySelector("#in_town").value,
-    coord: [lat_click, lng_click],
-    // color: "blue",
-    popup_text: document.querySelector("#in_name").value,
-    link: document.querySelector("#in_link").value,
-    id: getId(),
-  };
-  localizations.push(temp);
-  save2local_storage();
-  console.log(localizations);
-  document.querySelector("#in_coordination").value = "";
-  document.querySelector("#in_town").value = "";
-  document.querySelector("#in_name").value = "";
-  document.querySelector("#in_link").value = "";
-  update_map();
-  update_list();
+  if (document.querySelector("#in_coordination").value.length > 0) {
+    let temp = {
+      // name: "nocne_zwiedzanie",
+      town: document.querySelector("#in_town").value,
+      coord: [lat_click, lng_click],
+      // color: "blue",
+      popup_text: document.querySelector("#in_name").value,
+      link: document.querySelector("#in_link").value,
+      id: getId(),
+    };
+    localizations.push(temp);
+    save2local_storage();
+    console.log(localizations);
+    document.querySelector("#in_coordination").value = "";
+    document.querySelector("#in_town").value = "";
+    document.querySelector("#in_name").value = "";
+    document.querySelector("#in_link").value = "";
+    update_map();
+    update_list();
+  }
 });
 
 // L.geoJSON(to_sand).addTo(map);

@@ -159,6 +159,14 @@ localizations_data = [
     popup_text: "Kolorowa Wieś Zalipie",
     link: "https://idziemydalej.pl/czy-zalipie-to-najpiekniejsza-wies-w-polsce/",
   },
+  {
+    name: "Motor Lublin",
+    town: "Lublin",
+    coord: [51.232508541629244, 22.5568464554529],
+    color: "green",
+    popup_text: "Motor Lublin",
+    link: "https://www.motorlublin.eu/",
+  },
 ];
 
 // https://spatialgalaxy.net/categories/leaflet/
