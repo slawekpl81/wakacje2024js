@@ -168,6 +168,7 @@ function removeLocalization(event) {
   localizations = [
     ...localizations.filter((location) => location.id != remove_id),
   ];
+  save2local_storage();
   update_map();
   update_list();
 }
