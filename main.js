@@ -1,13 +1,17 @@
 let castle_icon = L.icon({
   iconUrl: "castle.png",
-  iconSize: [38, 95],
+  iconSize: [38, 38],
 });
 let sleep_icon = L.icon({
   iconUrl: "sleeping.png",
-  iconSize: [38, 95],
+  iconSize: [38, 38],
 });
 let here_icon = L.icon({
   iconUrl: "placeholder.png",
+  iconSize: [38, 38],
+});
+let select_icon = L.icon({
+  iconUrl: "green_marker.png",
   iconSize: [38, 38],
 });
 // =============== coordinations ========================================
@@ -90,7 +94,7 @@ if ("geolocation" in navigator) {
         .bindPopup("TU JESTEM!")
         .openPopup()
         .addTo(map);
-
+      map.setView([lat_user, lng_user], 13);
       // Do something with the location data, e.g. display on a map
       console.log(`Latitude: ${lat_user}, longitude: ${lng_user}`);
     },
@@ -113,18 +117,30 @@ localizations.forEach((element, n) => {
 // window.open(data_link, "_blank").focus();
 function add_markers() {
   for (let localization of localizations) {
-    if (localization.coord.length > 0) {
-      let temp = L.marker(localization.coord)
-        .bindPopup(localization.popup_text)
-        .openPopup()
-        .on("click", () => {
-          // a_to_travel.innerText = localization.popup_text;
-          data_link = localization.link;
-          selected = localization.id;
-          update_list();
-        });
-      markers.push(temp);
-    }
+    if (localization.coord.length > 0)
+      if (localization.id == selected) {
+        let temp = L.marker(localization.coord, { icon: select_icon })
+          .bindPopup(localization.popup_text)
+          .openPopup()
+          .on("click", () => {
+            // a_to_travel.innerText = localization.popup_text;
+            // data_link = localization.link;
+            selected = localization.id;
+            update_list();
+          });
+        markers.push(temp);
+      } else {
+        let temp = L.marker(localization.coord)
+          .bindPopup(localization.popup_text)
+          .openPopup()
+          .on("click", () => {
+            // a_to_travel.innerText = localization.popup_text;
+            // data_link = localization.link;
+            selected = localization.id;
+            update_list();
+          });
+        markers.push(temp);
+      }
   }
   markers.forEach((m) => m.addTo(map));
   console.log("markers ", markers.length);
