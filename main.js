@@ -231,6 +231,7 @@ document.querySelector("#bttn_ad_to_list").addEventListener("click", () => {
   document.querySelector("#in_name").value = "";
   document.querySelector("#in_link").value = "";
   update_map();
+  update_list();
 });
 
 // L.geoJSON(to_sand).addTo(map);
