@@ -5,9 +5,6 @@ body {
 li {
   margin-top: 10px;
 }
-.header p {
-  font-family: Arial, Helvetica, sans-serif;
-}
 .header {
   overflow: hidden;
 
@@ -19,14 +16,19 @@ li {
 
 /* Style the header links */
 .header p {
-  float: left;
-  color: black;
+  font-family: Arial, Helvetica, sans-serif;
   text-align: center;
   padding: 12px;
   text-decoration: none;
   font-size: 36px;
   line-height: 25px;
   border-radius: 4px;
+}
+.p-gold {
+  color: gold;
+}
+.p-black {
+  color: black;
 }
 #map {
   height: 80vh;
@@ -37,6 +39,7 @@ li {
   margin: 5px;
   padding: 5px;
   border: black 1px solid;
+  border-radius: 5px;
 }
 button {
   margin: 5px 5px;
