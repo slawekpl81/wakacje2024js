@@ -114,7 +114,7 @@ function render_list() {
 
     const select_span = document.createElement("span");
     select_span.innerText = "ZAZNACZ";
-    select_span.className = "btn btn-warning";
+    select_span.className = "btn btn-warning btn-lg";
     select_span.setAttribute("id", localization.id);
     select_span.addEventListener("click", selectLocalization);
 
@@ -122,7 +122,7 @@ function render_list() {
     remove_span.setAttribute("id", localization.id);
     remove_span.addEventListener("click", removeLocalization);
     remove_span.innerText = "USUŃ";
-    remove_span.className = "btn btn-success";
+    remove_span.className = "btn btn-success btn-lg";
 
     li.innerText = `${localization.town} - ${localization.popup_text}`;
     if (localization.id == selected) {
@@ -133,7 +133,7 @@ function render_list() {
     a_link.innerHTML = "WWW";
     a_link.href = localization.link;
     a_link.target = "_blank";
-    a_link.className = "btn btn-danger";
+    a_link.className = "btn btn-danger btn-lg";
     li.appendChild(div_group);
     div_group.appendChild(a_link);
 

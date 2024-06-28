@@ -1,13 +1,7 @@
 body {
   background-color: lightcyan;
 }
-a,
-span {
-  padding: 2px;
-  margin-left: 5px;
-  border: #fa6400 1px solid;
-  border-radius: 3px;
-}
+
 li {
   margin-top: 10px;
 }
@@ -52,7 +46,4 @@ input {
 }
 .btn-group {
   margin-left: 10px;
-}
-.btn {
-  padding: 20px;
 }
