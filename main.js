@@ -128,14 +128,15 @@ function render_list() {
     if (localization.id == selected) {
       li.style.backgroundColor = "lightgrey";
     }
-
-    const a_link = document.createElement("a");
-    a_link.innerHTML = "WWW";
-    a_link.href = localization.link;
-    a_link.target = "_blank";
-    a_link.className = "btn btn-danger btn-lg";
     li.appendChild(div_group);
-    div_group.appendChild(a_link);
+    if (localization.link.length !== 0) {
+      const a_link = document.createElement("a");
+      a_link.innerHTML = "WWW";
+      a_link.href = localization.link;
+      a_link.target = "_blank";
+      a_link.className = "btn btn-danger btn-lg";
+      div_group.appendChild(a_link);
+    }
 
     div_group.appendChild(select_span);
 
