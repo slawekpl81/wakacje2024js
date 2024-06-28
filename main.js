@@ -101,9 +101,20 @@ function render_list() {
   const ul = document.querySelector("ul");
   for (let localization of localizations) {
     const li = document.createElement("li");
+    li.className = "list-group-item";
+
+    //  <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+    //   <button type="button" class="btn btn-danger">Left</button>
+    //   <button type="button" class="btn btn-warning">Middle</button>
+    //   <button type="button" class="btn btn-success">Right</button>
+    // </div>
+
+    const div_group = document.createElement("div");
+    div_group.className = "btn-group";
 
     const select_span = document.createElement("span");
     select_span.innerText = "ZAZNACZ";
+    select_span.className = "btn btn-warning";
     select_span.setAttribute("id", localization.id);
     select_span.addEventListener("click", selectLocalization);
 
@@ -111,23 +122,24 @@ function render_list() {
     remove_span.setAttribute("id", localization.id);
     remove_span.addEventListener("click", removeLocalization);
     remove_span.innerText = "USUŃ";
+    remove_span.className = "btn btn-success";
 
     li.innerText = `${localization.town} - ${localization.popup_text}`;
     if (localization.id == selected) {
       li.style.backgroundColor = "lightgrey";
     }
 
-    if (localization.link != "") {
-      const a_link = document.createElement("a");
-      a_link.innerHTML = "www";
-      a_link.href = localization.link;
-      a_link.target = "_blank";
-      li.appendChild(a_link);
-    }
+    const a_link = document.createElement("a");
+    a_link.innerHTML = "WWW";
+    a_link.href = localization.link;
+    a_link.target = "_blank";
+    a_link.className = "btn btn-danger";
+    li.appendChild(div_group);
+    div_group.appendChild(a_link);
 
-    li.appendChild(select_span);
+    div_group.appendChild(select_span);
 
-    li.appendChild(remove_span);
+    div_group.appendChild(remove_span);
     ul.appendChild(li);
   }
 }

@@ -1,5 +1,5 @@
 body {
-  background-color: lightgreen;
+  background-color: lightcyan;
 }
 a,
 span {
@@ -16,8 +16,11 @@ li {
 }
 .header {
   overflow: hidden;
-  background-color: greenyellow;
+
   padding: 20px 10px;
+  background-image: url(/kazimierz.jpg);
+  background-size: cover;
+  background-position: center center;
 }
 
 /* Style the header links */
@@ -39,5 +42,17 @@ li {
 .add_place {
   margin: 5px;
   padding: 5px;
-  border: #fa6400 1px solid;
+  border: black 1px solid;
+}
+button {
+  margin: 5px 5px;
+}
+input {
+  margin: 5px 5px;
+}
+.btn-group {
+  margin-left: 10px;
+}
+.btn {
+  padding: 20px;
 }
